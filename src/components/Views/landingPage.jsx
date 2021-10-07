@@ -21,19 +21,6 @@ export default class landingPage extends Component {
         return locationItems;
     }
 
-    // async onFetchWeatherData() {
-    //     try {
-    //         const response = await fetch(GLOBAL_CONSTANTS.WEATHER_ENDPOINT, {
-    //             method: GLOBAL_CONSTANTS.METHODS.GET,
-    //             headers: GLOBAL_CONSTANTS.HEADERS,
-    //         })
-    //         const data = await response.json();
-    //         console.log(data)
-    //         this.setState({ weatherData: data })
-    //     } catch (e) {
-    //         console.log("Error while fetching the weather information...")
-    //     }
-    // }
 
     render() {
         return (
