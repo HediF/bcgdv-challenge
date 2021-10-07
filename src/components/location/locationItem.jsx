@@ -6,12 +6,11 @@ const LocationItem = props => {
         const [weatherData, setWeatherData] = useState([])
 
         useEffect(() => {
-                const weatherData = fetchWeatherData();
+                const weatherData = fetchWeatherData(props.locationName);
                 if(!weatherData){
                         setWeatherData(weatherData);
                 }
         });
-        console.log(weatherData)
 
         return (
                 <div className="location-item-container">
