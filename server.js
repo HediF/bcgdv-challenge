@@ -20,11 +20,9 @@ app.listen(port, () => console.log(`[INFO] [Server.js] Listening on port ${port}
 
 // GET route for fetching weather data information
 app.post('/weather-info', jsonParser, async (req, res) => { 
-
-  const weatherLocationUrl = this.onConstructWeatherUrl(req.body.location);
-
   try {
-    const response = await fetch(weatherLocationUrl, {
+    const weatherLocationUrl = await onConstructWeatherUrl(req.body.location);
+    const response = await fetch(process.env.OPEN_WEATHER_API + weatherLocationUrl, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
