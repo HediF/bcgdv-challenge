@@ -13,3 +13,6 @@ export const HEADERS =  {
     'Accept': 'application/json',
 }
 
+// Standard locations
+
+export const STANDARD_LOCATIONS = ['My location','London', 'Berlin']
