@@ -14,7 +14,7 @@ app.use(cors());
 // This displays message that the server running and listening to specified port
 app.listen(port, () => console.log(`[INFO] [Server.js] Listening on port ${port}`)); 
 
-// create a GET route
+// GET route for fetching weather data information
 app.get('/weather-info', async (req, res) => { 
   try {
     const response = await fetch(`${process.env.OPEN_WEATHER_API}q=London,uk&APPID=${process.env.API_KEY}`, {
