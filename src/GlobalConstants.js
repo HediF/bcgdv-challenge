@@ -13,6 +13,6 @@ export const HEADERS =  {
     'Accept': 'application/json',
 }
 
-// Standard locations
+// STANDARD LOCATIONS
+export const STANDARD_LOCATIONS = ['London', 'Berlin','Sfax']
 
-export const STANDARD_LOCATIONS = ['London', 'Berlin']

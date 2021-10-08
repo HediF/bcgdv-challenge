@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './landingPage.css'
 import * as GLOBAL_CONSTANTS from '../../GlobalConstants';
-import LocationItem from '../location/locationItem';
+import LocationItem from './location/locationItem';
 import Layout from '../containers/layout/layout';
 import LocationsGrid from '../containers/grid/grid';
 
