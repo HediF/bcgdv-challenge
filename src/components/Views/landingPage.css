@@ -1,12 +1,13 @@
-.locations-grid {
-    display: grid;
-    height: 90%;
-    width: 90%;
-    margin: 0 auto;
-    position: relative;
-    grid-gap: 10px;
-    gap: 10px;
-    margin-top: 20px;
-    grid-template-columns: repeat(auto-fill,minmax(min(19rem,100%),1fr));
+.dashboard-title {
+    color: white;
+    background-color: #1e2028;
     padding: 20px;
+    width: -moz-fit-content;
+    font-family: system-ui;
+    width: fit-content;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    font-size: 30px;
 }

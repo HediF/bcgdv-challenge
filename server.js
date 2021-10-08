@@ -39,7 +39,8 @@ app.post('/weather-info', jsonParser, async (req, res) => {
 function onConstructWeatherUrl(location) {
   let params = {
     q: location,
-    APPID: process.env.API_KEY
+    APPID: process.env.API_KEY,
+    units: process.env.TEMPERATURE_UNIT
   };
 
   let query = Object.keys(params)
