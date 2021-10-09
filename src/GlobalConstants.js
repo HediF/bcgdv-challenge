@@ -19,3 +19,4 @@ export const HEADERS =  {
 // STANDARD LOCATIONS
 export const STANDARD_LOCATIONS = ['London', 'Berlin']
 
+

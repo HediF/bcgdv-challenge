@@ -9,8 +9,8 @@ import './locationWeatherInfos.css';
 const LocationWeatherInfos = props => {
 
         var cityName = capitalizeFirstLetter(window.location.href.split("/").pop());
-        // var cityWeatherInfos = JSON.parse(localStorage.getItem(cityName));
-
+        var cityWeatherInfos = JSON.parse(localStorage.getItem(cityName));
+        console.log(cityWeatherInfos)
         function capitalizeFirstLetter(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
         }
@@ -26,8 +26,8 @@ const LocationWeatherInfos = props => {
                                 <p className="location-infos-header">{cityName}</p>
                         </div>
                         <div className="flex-container">
-                                <WeatherInfosLeftContainer/>
-                                <WeatherInfosTable/>
+                                <WeatherInfosLeftContainer temperature = {cityWeatherInfos.main} weather = {cityWeatherInfos.weather}/>
+                                <WeatherInfosTable weatherInfos = {cityWeatherInfos}/>
                         </div>
                 </Layout>
         )
