@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchWeatherData } from '../../api/fetchWeatherData';
+import * as GLOBAL_CONSTANTS from '../../../GlobalConstants';
 import './locationItem.css';
 
 const LocationItem = props => {
@@ -19,8 +20,12 @@ const LocationItem = props => {
                 fetchData();
         }, [props]);
 
+        function onDisplayMoreInfos () {
+                window.location.href = GLOBAL_CONSTANTS.LOCATION_ENDPOINT;
+        }
+
         return (
-                <div className="location-item-container" onClick={props.onLocationItemTriggered()}>
+                <div className="location-item-container" onClick={() => onDisplayMoreInfos()}>
                         <p className="location-name">{props.locationName}</p>
                         <p className="location-temperature">{Object.keys(weatherData).length > 0 ? Math.round(weatherData.main.temp) + '\u00B0C' : 'Fetching...'}</p>
                 </div>

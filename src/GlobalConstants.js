@@ -1,6 +1,9 @@
 // WEATHER INFO
 export const WEATHER_ENDPOINT = '/weather-info';
 
+// ROUTES
+export const LOCATION_ENDPOINT = '/location';
+
 // FETCHING 
 export const METHODS = {
     POST: 'POST',
@@ -14,5 +17,5 @@ export const HEADERS =  {
 }
 
 // STANDARD LOCATIONS
-export const STANDARD_LOCATIONS = ['London', 'Berlin','Sfax']
+export const STANDARD_LOCATIONS = ['London', 'Berlin']
 

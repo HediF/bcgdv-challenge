@@ -13,7 +13,7 @@ export default class landingPage extends Component {
             locations: [...GLOBAL_CONSTANTS.STANDARD_LOCATIONS],
         }
     }
-
+    
     onRenderLocations() {
         let currentLocations = this.state.locations;
         let locationItems = currentLocations.map((location, index) => {
