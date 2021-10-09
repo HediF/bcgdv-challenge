@@ -20,12 +20,12 @@ const LocationItem = props => {
                 fetchData();
         }, [props]);
 
-        function onDisplayMoreInfos () {
-                window.location.href = GLOBAL_CONSTANTS.LOCATION_ENDPOINT;
+        function onDisplayMoreLocationInfos () {
+                window.location.href = GLOBAL_CONSTANTS.LOCATION_ENDPOINT + '/' + props.locationName.toLowerCase();
         }
 
         return (
-                <div className="location-item-container" onClick={() => onDisplayMoreInfos()}>
+                <div className="location-item-container" onClick={() => onDisplayMoreLocationInfos()}>
                         <p className="location-name">{props.locationName}</p>
                         <p className="location-temperature">{Object.keys(weatherData).length > 0 ? Math.round(weatherData.main.temp) + '\u00B0C' : 'Fetching...'}</p>
                 </div>

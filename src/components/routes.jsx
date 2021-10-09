@@ -8,7 +8,7 @@ function AppRouter() {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={LandingPage}/>
-                <Route exact path="/location" component={LocationWeatherInfos}/>
+                <Route exact path="/location/:locationName" component={LocationWeatherInfos}/>
             </Switch>
         </BrowserRouter>
     );
