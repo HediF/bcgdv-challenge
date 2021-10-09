@@ -1,0 +1,28 @@
+table {
+    border-collapse: collapse;
+    color: white;
+    font-size: 25px;
+    padding: 20px;
+    margin: 0 auto;
+}
+table td, table th {
+    border: 3px solid white;
+    height: 120px;
+    width: 120px;
+    padding: 10px;
+}
+table tr:first-child th {
+    border-top: 0;
+    padding: 10px;
+}
+table tr:last-child td {
+    border-bottom: 0;
+}
+table tr td:first-child,
+table tr th:first-child {
+    border-left: 0;
+}
+table tr td:last-child,
+table tr th:last-child {
+    border-right: 0;
+}
