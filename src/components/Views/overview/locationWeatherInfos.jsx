@@ -9,7 +9,7 @@ import './locationWeatherInfos.css';
 const LocationWeatherInfos = props => {
 
         var cityName = capitalizeFirstLetter(window.location.href.split("/").pop());
-        var cityWeatherInfos = JSON.parse(localStorage.getItem(cityName));
+        // var cityWeatherInfos = JSON.parse(localStorage.getItem(cityName));
 
         function capitalizeFirstLetter(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);

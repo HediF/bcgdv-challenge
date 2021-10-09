@@ -1,6 +1,4 @@
 .dashboard-title {
-    color: white;
-    background-color: #1e2028;
     padding: 20px;
     width: -moz-fit-content;
     font-family: system-ui;
@@ -8,6 +6,8 @@
     position: relative;
     margin: 0 auto;
     margin-top: 30px;
+    color: white;
+    background-color: #1e2028;
     border-radius: 10px;
     font-size: 30px;
 }

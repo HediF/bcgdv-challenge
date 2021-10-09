@@ -1,7 +1,15 @@
 .location-infos-header {
-    color: white;
     font-size: 30px;
     font-family: system-ui;
+    color: white;
+    background-color: #1e2028;
+    border-radius: 10px;
+    font-size: 30px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: fit-content;
+    padding: 20px;
 }
 
 .back-button {
@@ -22,3 +30,11 @@
     padding: 20px;
     align-items: center;
 }
+
+@media screen and (max-width: 861px) {
+    .flex-container {
+        display: grid;
+    } 
+}
+
+

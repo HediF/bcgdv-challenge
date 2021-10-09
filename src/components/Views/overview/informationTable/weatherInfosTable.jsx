@@ -1,19 +1,21 @@
 import React from 'react';
-
+import TableCell from './tableCell/tableCell';
 import './weatherInfosTable.css';
 
 const weatherInfosTable = props => {
               
         return (
             <table>
-                <tr>
-                    <th>CELL1</th>
-                    <th>CELL2</th>
-                </tr>
-                <tr>
-                    <td>CELL3</td>
-                    <td>CELL4</td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <th><TableCell/></th>
+                        <th><TableCell/></th>
+                    </tr>
+                    <tr>
+                        <th><TableCell/></th>
+                        <th><TableCell/></th>
+                    </tr>
+                </tbody>
             </table>
         )
 }

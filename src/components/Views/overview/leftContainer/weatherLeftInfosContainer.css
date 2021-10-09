@@ -1,6 +1,52 @@
 .weather-info-left-container {
     color: white;
-    width: 50%;
+    min-width: 50%;
     float: left;
-    padding: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #1e2028;
+    box-shadow: 0px 0px 4px 2px rgb(255 255 255 / 91%);
+    -webkit-box-shadow: 0px 0px 4px 2px rgb(106 106 106 / 91%);
+    -moz-box-shadow: 0px 0px 4px 2px rgba(255,255,255,0.91);
+}
+
+.upper-info-display {
+    font-size: 25px;
+}
+
+.middle-info-display {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.bottom-info-display-left ,.bottom-info-display-right {
+    font-size: 25px;
+    min-width: fit-content;
+}
+
+.bottom-info-display-right {
+    margin-left: 30px;
+}
+
+.bottom-info-display-left {
+    margin-right: 30px;
+}
+
+.temperature-flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 861px) {
+    .weather-info-left-container {
+        justify-self: center;
+        margin-bottom: 20px;
+    } 
+    .temperature-flex-container {
+        display: grid;
+    }    
+    .bottom-info-display-left ,.bottom-info-display-right {
+        margin-left: 0px;
+        margin-right: 0px;
+    }    
 }

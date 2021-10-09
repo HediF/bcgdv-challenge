@@ -5,8 +5,11 @@ const weatherLeftInfosContainer = props => {
         return (
             <div className="weather-info-left-container">
                 <p className="upper-info-display">Sunny</p>
-                <p className="middle-info-display">12 \u00B0C</p>
-                <p className="bottom-info-display">This is more information</p>
+                <p className="middle-info-display">12 {'\u00B0'}C</p>
+                <div className="temperature-flex-container"> 
+                    <p className="bottom-info-display-left">Highest: 25 {'\u00B0'}C</p>
+                    <p className="bottom-info-display-right">Lowest: 12 {'\u00B0'}C</p>
+                </div>
             </div>
         )
 }
