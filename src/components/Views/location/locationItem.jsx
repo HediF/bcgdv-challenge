@@ -14,8 +14,13 @@ const LocationItem = props => {
                         } else {
                                 let fetchedWeatherData = null;
                                 fetchedWeatherData = await fetchWeatherData(props.locationName, props.myPosition);
-                                localStorage.setItem(props.locationName, JSON.stringify(fetchedWeatherData));
-                                setWeatherData(fetchedWeatherData);
+                                console.log(fetchedWeatherData)
+                                if(fetchedWeatherData.main || fetchedWeatherData.current) {
+                                        localStorage.setItem(props.locationName, JSON.stringify(fetchedWeatherData));
+                                        setWeatherData(fetchedWeatherData);        
+                                } else {
+                                        props.cityNotFound(props.locationName);
+                                }
                         }
                 }
                 fetchData();

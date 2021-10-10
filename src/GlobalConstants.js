@@ -20,4 +20,7 @@ export const HEADERS =  {
 export const STANDARD_LOCATIONS = ['London', 'Berlin']
 export const MY_LOCATION = 'My location'
 
+// LOCALSTORAGE
+export const STORED_LOCATIONS = 'locations'
+
 

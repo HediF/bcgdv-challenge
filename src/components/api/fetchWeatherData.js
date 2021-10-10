@@ -12,6 +12,7 @@ export const fetchWeatherData = async (locationName, position = null) => {
             }) 
         })
         const data = await response.json();
+        console.log(data)
         return data;
     } catch (e) {
         console.log("Error while fetching the weather information...")
