@@ -4,13 +4,15 @@ import { ic_keyboard_backspace_outline } from 'react-icons-kit/md/ic_keyboard_ba
 import { Icon } from 'react-icons-kit';
 import WeatherInfosTable from './informationTable/weatherInfosTable';
 import WeatherInfosLeftContainer from './leftContainer/weatherLeftInfosContainer';
+import * as GLOBAL_CONSTANTS from '../../../GlobalConstants';
 import './locationWeatherInfos.css';
 
 const LocationWeatherInfos = props => {
 
-        var cityName = capitalizeFirstLetter(window.location.href.split("/").pop());
-        var cityWeatherInfos = JSON.parse(localStorage.getItem(cityName));
-        console.log(cityWeatherInfos)
+        let cityName = capitalizeFirstLetter(window.location.href.split("/").pop()).replace(/%20/g, " ");
+        let cityWeatherInfos = JSON.parse(localStorage.getItem(cityName));
+        let isMyLocation = cityName === GLOBAL_CONSTANTS.STANDARD_LOCATIONS[0];
+
         function capitalizeFirstLetter(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
         }
@@ -26,8 +28,12 @@ const LocationWeatherInfos = props => {
                                 <p className="location-infos-header">{cityName}</p>
                         </div>
                         <div className="flex-container">
-                                <WeatherInfosLeftContainer temperature = {cityWeatherInfos.main} weather = {cityWeatherInfos.weather}/>
-                                <WeatherInfosTable weatherInfos = {cityWeatherInfos}/>
+                                <WeatherInfosLeftContainer
+                                        isMyLocation={isMyLocation}
+                                        temperature={isMyLocation ? cityWeatherInfos.daily : cityWeatherInfos.main}
+                                        weather={isMyLocation ? cityWeatherInfos.current : cityWeatherInfos.weather}
+                                />
+                                <WeatherInfosTable weatherInfos={cityWeatherInfos} isMyLocation={isMyLocation} />
                         </div>
                 </Layout>
         )
