@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import LandingPage from './views/landingPage';
-import LocationWeatherInfos from './views/overview/locationWeatherInfos';
+import LandingPage from './viewElements/landingPage';
+import LocationWeatherInfos from './viewElements/overview/locationWeatherInfos';
 
 function AppRouter() {
     return (

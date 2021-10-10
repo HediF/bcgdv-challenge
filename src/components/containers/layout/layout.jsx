@@ -1,5 +1,3 @@
-/* Container for the middlepanel that will contain the views used for this project */
-
 import React from 'react';
 import './layout.css'
 

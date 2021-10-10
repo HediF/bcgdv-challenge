@@ -7,7 +7,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 const app = express(); 
 const ENV_FILE = path.join(__dirname, '.env');
 const env = require('dotenv').config({ path: ENV_FILE });
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 // Enable the express server to respond to preflight requests 
 app.use(cors());
