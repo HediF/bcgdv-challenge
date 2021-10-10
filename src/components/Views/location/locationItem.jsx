@@ -9,10 +9,11 @@ const LocationItem = props => {
 
         useEffect(() => {
                 const fetchData = async () => {
-                        if (localStorage.getItem(props.locationName) !== null) {
+                        if (localStorage.getItem(props.locationName) && !props.myPosition) {
                                 setWeatherData(JSON.parse(localStorage.getItem(props.locationName)))
                         } else {
-                                const fetchedWeatherData = await fetchWeatherData(props.locationName);
+                                let fetchedWeatherData = null;
+                                fetchedWeatherData = await fetchWeatherData(props.locationName, props.myPosition);
                                 localStorage.setItem(props.locationName, JSON.stringify(fetchedWeatherData));
                                 setWeatherData(fetchedWeatherData);
                         }
@@ -21,13 +22,12 @@ const LocationItem = props => {
         }, [props]);
 
         function onDisplayMoreLocationInfos () {
-                window.location.href = GLOBAL_CONSTANTS.LOCATION_ENDPOINT + '/' + props.locationName.toLowerCase();
+                window.location.href = GLOBAL_CONSTANTS.LOCATION_ENDPOINT + '/' + props.locationName.toLowerCase()
         }
-
         return (
                 <div className="location-item-container" onClick={() => onDisplayMoreLocationInfos()}>
                         <p className="location-name">{props.locationName}</p>
-                        <p className="location-temperature">{Object.keys(weatherData).length > 0 ? Math.round(weatherData.main.temp) + '\u00B0C' : 'Fetching...'}</p>
+                        <p className="location-temperature">{weatherData.main ? Math.round(weatherData.main.temp) + '\u00B0C' : 'Fetching...'}</p>
                 </div>
         )
 }

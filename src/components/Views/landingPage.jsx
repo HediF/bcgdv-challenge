@@ -11,17 +11,30 @@ export default class landingPage extends Component {
         super(props);
         this.state = {
             locations: [...GLOBAL_CONSTANTS.STANDARD_LOCATIONS],
+            myPosition: null
         }
     }
+
+    getPosition() {
+        return new Promise((res, rej) => {
+            navigator.geolocation.getCurrentPosition(res, rej);
+        });
+    }    
     
+    async componentDidMount() {
+        let position = await this.getPosition();
+        this.setState({
+            myPosition: position
+        })
+    }
+
     onRenderLocations() {
         let currentLocations = this.state.locations;
         let locationItems = currentLocations.map((location, index) => {
-            return <LocationItem locationName={location} key={location + index} />
+            return <LocationItem locationName={location} key={location + index} myPosition = {location === GLOBAL_CONSTANTS.STANDARD_LOCATIONS[0] ? this.state.myPosition : null} />
         })
         return locationItems;
     }
-
 
     render() {
         return (

@@ -21,8 +21,13 @@ app.listen(port, () => console.log(`[INFO] [Server.js] Listening on port ${port}
 // GET route for fetching weather data information
 app.post('/weather-info', jsonParser, async (req, res) => { 
   try {
-    const weatherLocationUrl = await onConstructWeatherUrl(req.body.location);
-    const response = await fetch(process.env.OPEN_WEATHER_API + weatherLocationUrl, {
+    let weatherLocationUrl = null;
+    if(req.body.latitude && req.body.longitude) {
+        weatherLocationUrl = process.env.OPEN_WEATHER_API_LAT_LON + await onConstructWeatherUrl({latitude: req.body.latitude, longitude: req.body.longitude}, true);
+    } else {
+        weatherLocationUrl = process.env.OPEN_WEATHER_API + await onConstructWeatherUrl(req.body.location);
+    }
+    const response = await fetch(weatherLocationUrl, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -36,13 +41,22 @@ app.post('/weather-info', jsonParser, async (req, res) => {
   }
 });
 
-function onConstructWeatherUrl(location) {
-  let params = {
-    q: location,
-    APPID: process.env.API_KEY,
-    units: process.env.TEMPERATURE_UNIT
-  };
-
+function onConstructWeatherUrl(location, withLatLong = false) {
+  let params = {};
+  if(withLatLong) {
+    params = {
+      lat: location.latitude,
+      lon: location.longitude,
+      APPID: process.env.API_KEY,
+      units: process.env.TEMPERATURE_UNIT
+    };  
+  } else {
+    params = {
+      q: location,
+      APPID: process.env.API_KEY,
+      units: process.env.TEMPERATURE_UNIT
+    };  
+  }
   let query = Object.keys(params)
                .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
                .join('&');
