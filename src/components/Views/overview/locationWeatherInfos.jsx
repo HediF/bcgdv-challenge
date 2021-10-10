@@ -11,7 +11,7 @@ const LocationWeatherInfos = props => {
 
         let cityName = capitalizeFirstLetter(window.location.href.split("/").pop()).replace(/%20/g, " ");
         let cityWeatherInfos = JSON.parse(localStorage.getItem(cityName));
-        let isMyLocation = cityName === GLOBAL_CONSTANTS.STANDARD_LOCATIONS[0];
+        let isMyLocation = cityName === GLOBAL_CONSTANTS.MY_LOCATION;
 
         function capitalizeFirstLetter(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);

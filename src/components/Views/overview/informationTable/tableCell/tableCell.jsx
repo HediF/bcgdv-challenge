@@ -9,10 +9,17 @@ const CELL_TYPES_ENUM = {
 }
 
 const tableCell = props => {
+
+        function convertToDate (sec) {
+          let date = new Date(sec * 1000);
+          let timestr = date.toLocaleTimeString();
+          return timestr;
+        }
+
         return (
            <div className="cell-container">
                <p className="cell-header">{props.type}</p>
-               <p className="cell-info-content">{props.content} {props.type === CELL_TYPES_ENUM.VISIBILITY ? 'Km' : void(0)}</p>
+               <p className="cell-info-content">{(props.type === CELL_TYPES_ENUM.SUNRISE) || (props.type === CELL_TYPES_ENUM.SUNSET) ? convertToDate(props.content) : props.content} {props.type === CELL_TYPES_ENUM.VISIBILITY ? 'Km' : void(0)}</p>
            </div>
          )
 }

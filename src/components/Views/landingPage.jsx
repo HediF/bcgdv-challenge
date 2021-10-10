@@ -23,7 +23,10 @@ export default class landingPage extends Component {
     
     async componentDidMount() {
         let position = await this.getPosition();
+        let locations = [...this.state.locations];
+        locations.unshift(GLOBAL_CONSTANTS.MY_LOCATION)
         this.setState({
+            locations: locations,
             myPosition: position
         })
     }
@@ -31,7 +34,7 @@ export default class landingPage extends Component {
     onRenderLocations() {
         let currentLocations = this.state.locations;
         let locationItems = currentLocations.map((location, index) => {
-            return <LocationItem locationName={location} key={location + index} myPosition = {location === GLOBAL_CONSTANTS.STANDARD_LOCATIONS[0] ? this.state.myPosition : null} />
+            return <LocationItem locationName={location} key={location + index} myPosition = {location === GLOBAL_CONSTANTS.MY_LOCATION ? this.state.myPosition : null} />
         })
         return locationItems;
     }

@@ -14,7 +14,7 @@ const LocationItem = props => {
                         } else {
                                 let fetchedWeatherData = null;
                                 fetchedWeatherData = await fetchWeatherData(props.locationName, props.myPosition);
-                                localStorage.setItem(props.locationName.trim(), JSON.stringify(fetchedWeatherData));
+                                localStorage.setItem(props.locationName, JSON.stringify(fetchedWeatherData));
                                 setWeatherData(fetchedWeatherData);
                         }
                 }
@@ -24,10 +24,13 @@ const LocationItem = props => {
         function onDisplayMoreLocationInfos () {
                 window.location.href = GLOBAL_CONSTANTS.LOCATION_ENDPOINT + '/' + props.locationName.toLowerCase();
         }
+
+        let currentTemperature = weatherData.main ? Math.round(weatherData.main.temp) + '\u00B0C' : (weatherData.current ? Math.round(weatherData.current.temp) + '\u00B0C' : 'Fetching...')
+
         return (
                 <div className="location-item-container" onClick={() => onDisplayMoreLocationInfos()}>
                         <p className="location-name">{props.locationName}</p>
-                        <p className="location-temperature">{weatherData.main ? Math.round(weatherData.main.temp) + '\u00B0C' : 'Fetching...'}</p>
+                        <p className="location-temperature">{currentTemperature}</p>
                 </div>
         )
 }

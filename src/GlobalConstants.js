@@ -17,6 +17,7 @@ export const HEADERS =  {
 }
 
 // STANDARD LOCATIONS
-export const STANDARD_LOCATIONS = ['My location','London', 'Berlin']
+export const STANDARD_LOCATIONS = ['London', 'Berlin']
+export const MY_LOCATION = 'My location'
 
 
