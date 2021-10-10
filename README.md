@@ -62,9 +62,9 @@ The app is responsive and UI elements will be adjusted depending on the screen s
 
 ## What I would improve
 
-- Store fetched locations inside an array of fetched locations inside the localstorage and not separately.
 - Pass the extra information as props to the routed component instead of fetching the extra information from the localstorage when a location card is clicked.
 - More error handling (Example: instead of just logging that there have been a problem with fetching the data, return a property to the other component and update its state accordingly, then accordingly display a UI element to give the user more information about the respective error)
+- Store all fetched locations inside one single array of fetched locations inside the localstorage instead of storing them separately (also in the localstorage).
 - Delete the data inside the localstorage every 30 minutes in order to re-fetch the data in case there have been changes on the server side.
 - Change the component used to fetch the weather data to a class component instead of a functional component because it would be more easy to handle http requests
 - Add extra features (Filter for temperature unit, weather icon (sun, rain))
