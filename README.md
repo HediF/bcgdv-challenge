@@ -67,7 +67,7 @@ The app is responsive and UI elements will be adjusted depending on the screen w
 In order to run the test, open a new terminal and run npm test while the application is app and running, then select landingpage.js in the cypress tab that will appear.
 
 ## What I would improve
-- More automated tests (More unit tests, more testing for httprequests etc.). Unfortunately I did not have enough time to create very consistent tests as I do not previous experience regarding test automation.
+- More automated tests (More unit tests, more testing for httprequests etc.). Unfortunately I did not have enough time to create very consistent tests as I do not previous experience regarding testing in the web context.
 - More error handling (Example: instead of just logging that there have been a problem with fetching the data, return a property to the other component and update its state accordingly, then accordingly display a UI element to give the user more information about the respective error) or by adding an error function while getting authorization to access the user location.
 - Pass the extra information as props to the routed component instead of fetching the extra information from the localstorage when a location card is clicked.
 - Store all fetched locations inside one single array of fetched locations inside the localstorage instead of storing them separately (also in the localstorage).
