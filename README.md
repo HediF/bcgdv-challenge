@@ -60,8 +60,14 @@ The app is responsive and UI elements will be adjusted depending on the screen w
 
 10- Created the extra feature in order the allow the user to fetch data for locations of his/her choice following the same logic in step 9 (the entered city will be only added to the locations state array). There was no need to implement a new logic because the process is similar to fetching data for the default locations by city name.
 
-## What I would improve
+## Testing
 
+`cypress/integration/dashboard.js` --> contains automated tests for the landing page.
+
+In order to run the test, open a new terminal and run npm test while the application is app and running, then select landingpage.js in the cypress tab that will appear.
+
+## What I would improve
+- More automated tests (More unit tests, more testing for httprequests etc.). Unfortunately I did not have enough time to create very consistent tests as I do not previous experience regarding test automation.
 - More error handling (Example: instead of just logging that there have been a problem with fetching the data, return a property to the other component and update its state accordingly, then accordingly display a UI element to give the user more information about the respective error) or by adding an error function while getting authorization to access the user location.
 - Pass the extra information as props to the routed component instead of fetching the extra information from the localstorage when a location card is clicked.
 - Store all fetched locations inside one single array of fetched locations inside the localstorage instead of storing them separately (also in the localstorage).
@@ -73,6 +79,7 @@ The app is responsive and UI elements will be adjusted depending on the screen w
 - Add docker file
 - Use css classes
 - Use global css attributes by injecting them in the body or in a wrapper component 
+- When a user rejects localization, than adds a new city and then updates the page, the locations array is not being fetched from the localstorage, this is probably because the getPosition() method is being called everytime in component did mount and it blocks the process if the location is rejected. A possibile solution would be to store a variablee (isPermissionGranted) in the localstorage and only call the getPositionMethod the first render
 
 ## Elements
 `components/api` : contains the method used to redirect the fetch request to the server running on port 5000
@@ -83,9 +90,4 @@ The app is responsive and UI elements will be adjusted depending on the screen w
 `GlobalConstants`: Contains constants that are used for several UI elements
 `server.js`: Express server in order to fetch the weather data using the OpenWeatherMap API key and location name / coordinates. This has not been directly done from the client side for security purposes.
 
-## Testing
-
-TODO
-
-In order to run the test, run npm test while the application is app and running, then select landingpage.js in the cypress tab that will appear.
 

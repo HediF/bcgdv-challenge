@@ -31,9 +31,9 @@ const LocationItem = props => {
         }
 
         let currentTemperature = weatherData.main ? Math.round(weatherData.main.temp) + '\u00B0C' : (weatherData.current ? Math.round(weatherData.current.temp) + '\u00B0C' : 'Fetching...')
-
+        console.log(props.locationName)
         return (
-                <div className="location-item-container" onClick={() => onDisplayMoreLocationInfos()}>
+                <div id={props.locationName} className="location-item-container" onClick={() => onDisplayMoreLocationInfos()}>
                         <p className="location-name">{props.locationName}</p>
                         <p className="location-temperature">{currentTemperature}</p>
                 </div>

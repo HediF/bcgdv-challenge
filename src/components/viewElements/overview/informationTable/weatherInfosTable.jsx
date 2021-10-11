@@ -17,7 +17,7 @@ const weatherInfosTable = props => {
     let visiblity = props.isMyLocation ? Math.round(props.weatherInfos.current.visibility / 1000) : Math.round(props.weatherInfos.visibility / 1000);
 
     return (
-        <table>
+        <table id="information-table">
             <tbody>
                 <tr>
                     <th>

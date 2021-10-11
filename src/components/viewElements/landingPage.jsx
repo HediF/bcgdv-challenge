@@ -9,26 +9,45 @@ import Icon from 'react-icons-kit';
 
 export default class landingPage extends Component {
 
+
+
     constructor(props) {
         super(props);
         this.state = {
             locations: [...GLOBAL_CONSTANTS.STANDARD_LOCATIONS],
             myPosition: null,
             addedCity: '',
-            notFoundCity: null
+            notFoundCity: null,
+            alreadyExists: false
         }
+        this.onSuccess = this.onSuccess.bind(this);
+        this.onFailure = this.onFailure.bind(this);
     }
 
     getPosition() {
-        return new Promise((res, rej) => {
-            navigator.geolocation.getCurrentPosition(res, rej);
+        return new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(
+              function (position) {
+                resolve(this.onSuccess(position));
+              }.bind(this),                  
+                this.onFailure,
+            );
         });
-    }    
+     }    
+
+    async onSuccess (position) {
+        return position;
+    }
+    
+    onFailure(error) {
+        console.warn(`ERROR(${error.code}): ${error.message}`);
+    }
+    
     
     async componentDidMount() {
-        let position = await this.getPosition();
+        let position = await this.getPosition();    
         let locations = JSON.parse(localStorage.getItem(GLOBAL_CONSTANTS.STORED_LOCATIONS)) || [...GLOBAL_CONSTANTS.STANDARD_LOCATIONS];
-        if(!locations.includes(GLOBAL_CONSTANTS.MY_LOCATION)) {
+        if(!!position && !locations.includes(GLOBAL_CONSTANTS.MY_LOCATION)) {
             locations.unshift(GLOBAL_CONSTANTS.MY_LOCATION)
         }
         this.setState({
@@ -69,7 +88,9 @@ export default class landingPage extends Component {
         if (!this.state.locations.includes(city) && city !== ''){
             let newLocationsList = [...this.state.locations, city];
             localStorage.setItem(GLOBAL_CONSTANTS.STORED_LOCATIONS, JSON.stringify(newLocationsList));
-            this.setState({ locations: newLocationsList , addedCity: '', notFoundCity: null});    
+            this.setState({ locations: newLocationsList , addedCity: '', notFoundCity: null, alreadyExists: false});    
+        } else if (this.state.locations.includes(city)) {
+            this.setState({ alreadyExists: true});    
         }
     }
 
@@ -83,10 +104,11 @@ export default class landingPage extends Component {
                 <p className="dashboard-title">Dashboard</p>
                 <div className="search-container"> 
                     <Icon  className='search-icon' size={'100%'} icon={ic_search}/>
-                    <input className="add-weather-input" placeholder="Select a new city..." value={this.state.addedCity} onChange={(e) => this.handleInputChange(e)}/>
+                    <input className="add-weather-input" id="add-weather-input" placeholder="Select a new city..." value={this.state.addedCity} onChange={(e) => this.handleInputChange(e)}/>
                     <button className="display-weather" onClick={() => this.handleSearch()}>Display weather</button>
                 </div>
-                <p className="not-found">{this.state.notFoundCity ? 'Could not find data for: ' + this.state.notFoundCity : void(0)}</p>
+                <p className="not-found" id="not-found">{this.state.notFoundCity ? 'Could not find data for: ' + this.state.notFoundCity : void(0)}</p>
+                <p className="already-exists" id="already-exists">{this.state.alreadyExists ? 'The weather information for this city are already shown' : void(0)}</p>
                 <LocationsGrid>
                     {this.onRenderLocations()}
                 </LocationsGrid>

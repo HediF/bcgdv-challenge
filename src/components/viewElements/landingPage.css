@@ -69,7 +69,7 @@
     margin-top: 20px;
 }
 
-.not-found {
+.not-found, .already-exists {
     color: red;
     font-weight: bold;
     font-size: 20px;
