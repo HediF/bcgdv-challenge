@@ -41,6 +41,7 @@ app.post('/weather-info', jsonParser, async (req, res) => {
   }
 });
 
+// Method to construct the url query depending on wether the data will be fetched using coordinates or location name 
 function onConstructWeatherUrl(location, withLatLong = false) {
   let params = {};
   if(withLatLong) {

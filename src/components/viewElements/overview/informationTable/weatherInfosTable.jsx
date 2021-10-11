@@ -9,8 +9,10 @@ const CELL_TYPES_ENUM = {
     SUNRISE: 'Sunrise',
 }
 
+// Weather information table in the stretch component
 const weatherInfosTable = props => {
 
+    // Differentiation between user's current location and other locations
     let sunrise = props.isMyLocation ? props.weatherInfos.current.sunrise : props.weatherInfos.sys.sunrise;
     let sunset = props.isMyLocation ? props.weatherInfos.current.sunset : props.weatherInfos.sys.sunset;
     let humidity = props.isMyLocation ? props.weatherInfos.current.humidity : props.weatherInfos.main.humidity;

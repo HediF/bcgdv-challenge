@@ -7,16 +7,21 @@ import WeatherInfosLeftContainer from './leftContainer/weatherLeftInfosContainer
 import * as GLOBAL_CONSTANTS from '../../../GlobalConstants';
 import './locationWeatherInfos.css';
 
+// Container of the stretch component
 const LocationWeatherInfos = props => {
-
+        // gets the city name from the url path
         let cityName = capitalizeFirstLetter(window.location.href.split("/").pop()).replace(/%20/g, " ");
+        // fetch weather infos from the localstorage
         let cityWeatherInfos = JSON.parse(localStorage.getItem(cityName));
+        // check if the location is the current location of the user
         let isMyLocation = cityName === GLOBAL_CONSTANTS.MY_LOCATION;
 
+        // Method to capitalize the first letter of a string
         function capitalizeFirstLetter(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
         }
 
+        // Method to redirect to the dashboard when the back icon is clicked
         function redirectToLandingPage() {
                 window.location.href = '/';
         }

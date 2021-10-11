@@ -1,6 +1,7 @@
 import React from 'react';
 import './weatherLeftInfosContainer.css';
 
+// Component to show more weather information display in the stretch component to the left side of the screen 
 const weatherLeftInfosContainer = props => {
     return (
         <div className="weather-info-left-container" id="left-container">

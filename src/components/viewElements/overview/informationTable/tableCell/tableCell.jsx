@@ -8,8 +8,10 @@ const CELL_TYPES_ENUM = {
   SUNRISE: 'Sunrise',
 }
 
+// Reusable table cell for the table in the stretch component
 const tableCell = props => {
 
+        // Converts date in seconds to normal date
         function convertToDate (sec) {
           let date = new Date(sec * 1000);
           let timestr = date.toLocaleTimeString();
