@@ -98,7 +98,7 @@ export default class landingPage extends Component {
             localStorage.setItem(GLOBAL_CONSTANTS.STORED_LOCATIONS, JSON.stringify(newLocationsList));
             this.setState({ locations: newLocationsList, addedCity: '', notFoundCity: null, alreadyExists: false });
         } else if (this.state.locations.includes(city)) {
-            this.setState({ alreadyExists: true });
+            this.setState({ alreadyExists: true, notFoundCity: null });
         }
     }
 
