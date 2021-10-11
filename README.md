@@ -4,7 +4,7 @@
 ## Installation
 1. Clone this repository
 2. Install the packages using npm install (in your command line execute: npm install)
-3. Add the .env file that contains configuration variables and the API key for OpenWeatherMap in the root directory of the project (configuration variabkes will be sent by e-mail during this project)
+3. Add the .env file that contains configuration variables and the API key for OpenWeatherMap in the root directory of the project (configuration variables will be sent via e-mail for this project)
 4. Launch the app in development mode using npm start (in your command line execute: npm start)
 5. Open a new terminal and launch the server using node server.js from the project root directory (In a new terminal execute: node server.js)
 
